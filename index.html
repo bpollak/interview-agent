@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpsInsight - Enterprise Value Stream Agent</title>
+    <script src="coi-serviceworker.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f4f6f9; color: #333; }
+        .visualizer { width: 100%; height: 100px; background: #000; border-radius: 4px; margin-bottom: 10px; }
+        .card { border: none; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .btn-enterprise { background-color: #0d6efd; color: white; }
+        .json-output { background: #1e1e1e; color: #00ff00; font-family: monospace; padding: 15px; border-radius: 4px; min-height: 200px; white-space: pre-wrap; }
+    </style>
+</head>
+<body>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="text-center mb-5">
+                <h1>OpsInsight Agent</h1>
+                <p class="text-muted">Automated Value Stream Mapping Interviewer</p>
+            </div>
+
+            <div class="card p-4 mb-4">
+                <div class="mb-3">
+                    <label for="api-key" class="form-label">Google API Key (Gemini Multimodal Live)</label>
+                    <input type="password" class="form-control" id="api-key" placeholder="Enter your AI Studio API Key">
+                    <div class="form-text">Stored in memory only. Never sent to our servers.</div>
+                </div>
+
+                <div class="d-flex gap-2 justify-content-center mb-4">
+                    <button id="start-btn" class="btn btn-enterprise btn-lg">Start Interview</button>
+                    <button id="stop-btn" class="btn btn-secondary btn-lg" disabled>Stop</button>
+                    <button id="end-btn" class="btn btn-danger btn-lg" disabled>End Session</button>
+                </div>
+                
+                <div class="text-center mb-3" id="status">Status: Ready</div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <h6>Microphone Input (VAD)</h6>
+                        <canvas id="input-visualizer" class="visualizer"></canvas>
+                    </div>
+                    <div class="col-6">
+                        <h6>Agent Voice</h6>
+                        <canvas id="output-visualizer" class="visualizer"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card p-4">
+                <h5>Structured Output (VSM Data)</h5>
+                <div id="json-result" class="json-output">Waiting for interview completion...</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="module" src="js/main.js"></script>
+
+</body>
+</html>
